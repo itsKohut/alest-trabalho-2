@@ -2,6 +2,11 @@ public class Main {
 
     public static void main(String[] args) {
 
+        TXTFileChooser txtChooser = new TXTFileChooser();
+        String filePath = txtChooser.getPath();
+        String fileName = filePath.substring(8);
+        System.out.print("\nSELECTED: " + fileName);
+
         Graph graph = new Graph(9);
 
         Castle zero = new Castle(0,144);

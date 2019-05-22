@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Graph {
 
-    public  static int count;
+    public static int count;
 
     private int vertices;
     private List<Castle> roadsOfCastle[];
@@ -47,7 +47,7 @@ public class Graph {
         return Graph.count;
     }
 
-    private void conquered(int target, boolean[] visited, int temp){
+    private void conquered(int target, boolean[] visited, int temp) {
 
         visited[target] = true;
 
@@ -62,7 +62,7 @@ public class Graph {
         visited[target] = false;
         updateCastlesConquered(temp);
 
-        }
+    }
 
     private void updateCastlesConquered(int temp) {
         if (temp > count){
