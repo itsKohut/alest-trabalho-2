@@ -2,6 +2,7 @@ public class Castle {
 
     private int castleNumber;
     private int initialKnights;
+
     private int remainingKnights;
 
 
@@ -15,6 +16,7 @@ public class Castle {
     public int getCastleNumber() {
         return castleNumber;
     }
+
 
     public int getInitialKnights() {
         return initialKnights;

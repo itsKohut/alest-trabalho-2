@@ -2,10 +2,10 @@ public class Main {
 
     public static void main(String[] args) {
 
-        TXTFileChooser txtChooser = new TXTFileChooser();
-        String filePath = txtChooser.getPath();
-        String fileName = filePath.substring(8);
-        System.out.print("\nSELECTED: " + fileName);
+//        TXTFileChooser txtChooser = new TXTFileChooser();
+//        String filePath = txtChooser.getPath();
+//        String fileName = filePath.substring(8);
+//        System.out.print("\nSELECTED: " + fileName);
 
         Graph graph = new Graph(9);
 
@@ -19,6 +19,15 @@ public class Main {
         Castle seven = new Castle(7,84);
         Castle eigth = new Castle(8,35);
 
+        graph.castle.put(0, zero);
+        graph.castle.put(1, one);
+        graph.castle.put(2, two );
+        graph.castle.put(3, three);
+        graph.castle.put(4, four);
+        graph.castle.put(5, five);
+        graph.castle.put(6, six);
+        graph.castle.put(7, seven);
+        graph.castle.put(8, eigth);
 
 
         graph.addEdge(zero,five);

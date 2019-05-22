@@ -5,12 +5,12 @@ import java.util.Map;
 
 public class Graph {
 
-    public static int count;
+    public  static int count = 0;
 
     private int vertices;
     private List<Castle> roadsOfCastle[];
 
-    private Map<Integer, Castle> castle;
+    public Map<Integer, Castle> castle;
 
     public Graph(int vertices) {
         this.vertices = vertices;
@@ -47,15 +47,15 @@ public class Graph {
         return Graph.count;
     }
 
-    private void conquered(int target, boolean[] visited, int temp) {
+    private void conquered(int target, boolean[] visited,int temp){
+
 
         visited[target] = true;
 
         for (Castle c : adj(target)) {
             int cn = c.getCastleNumber();
-            if (!visited[cn] && hasEnoughKnights(target, cn)) {
-                temp++;
-                conquered(cn, visited, temp);
+            if (!visited[cn] && hasEnoughKnights(target, cn)) { ;
+                conquered(cn, visited, temp + 1);
             }
         }
 
@@ -65,9 +65,11 @@ public class Graph {
     }
 
     private void updateCastlesConquered(int temp) {
-        if (temp > count){
+        if (temp >= count){
             count = temp;
         }
+
+
     }
 
     private boolean hasEnoughKnights(int to, int from) {
@@ -77,9 +79,11 @@ public class Graph {
         Castle atk = this.castle.get(to);
         Castle def = this.castle.get(from);
 
-        int survived = atk.getRemainingKnights() - ((def.getInitialKnights() * 2) - 50);
+        int survived = atk.getRemainingKnights() - ((def.getInitialKnights() * 2) + 50);
+
 
         if (survived >= 0) {
+
             def.setRemainingKnights(survived);
             sucessulAtack = true;
         }
