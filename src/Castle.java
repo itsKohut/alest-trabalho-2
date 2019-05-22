@@ -1,27 +1,43 @@
 public class Castle {
 
-    int castle;
-    int knights;
+    private int castleNumber;
+    private int initialKnights;
 
-    public Castle(int castle, int knights){
-        this.castle = castle;
-        this.knights = knights;
+    private int remainingKnights;
+
+
+
+    public Castle(int castleNumber, int initialKnights){
+        this.castleNumber = castleNumber;
+        this.initialKnights = initialKnights;
+        this.remainingKnights = initialKnights;
     }
 
-    public int getCastle() {
-        return castle;
+    public int getCastleNumber() {
+        return castleNumber;
     }
 
-    public int getKnights() {
-        return knights;
+
+    public int getInitialKnights() {
+        return initialKnights;
+    }
+
+    public int getRemainingKnights() {
+        return remainingKnights;
+    }
+
+    public void setRemainingKnights(int remainingKnights) {
+        this.remainingKnights = remainingKnights;
     }
 
     public String toString(){
         StringBuilder sb = new StringBuilder();
+        sb.append("-------------------------").append("\n");
         sb.append("Castle: ");
-        sb.append(getCastle()).append(", ");
-        sb.append("Knights: ");
-        sb.append(getKnights());
+        sb.append(this.getCastleNumber()).append("\n");
+        sb.append("Remaining Knights: ");
+        sb.append(this.getRemainingKnights()).append("\n");
+        sb.append("-------------------------").append("\n");
         return  sb.toString();
     }
 

@@ -14,6 +14,8 @@ public class Main {
         Castle seven = new Castle(7,84);
         Castle eigth = new Castle(8,35);
 
+
+
         graph.addEdge(zero,five);
         graph.addEdge(zero, six);
         graph.addEdge(zero, eigth);
@@ -33,7 +35,9 @@ public class Main {
         graph.addEdge(three, six);
         graph.addEdge(three, seven);
         graph.addEdge(three, eigth);
-        graph.printGraph();
+
+
+        System.out.print(graph.conquered());
     }
 }
 
