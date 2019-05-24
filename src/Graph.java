@@ -1,35 +1,77 @@
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Graph {
 
-    public  static int count = 0;
+    public static int count = 0;
 
     private int vertices;
-    private List<Castle> roadsOfCastle[];
+    private List<Castle>[] roadsOfCastle;
 
     public Map<Integer, Castle> castle;
 
-    public Graph(int vertices) {
-        this.vertices = vertices;
-        this.roadsOfCastle = new LinkedList[vertices]; // It will be populated from txt file
-        for (int i = 0; i < vertices; i++) { //
-            roadsOfCastle[i] = new LinkedList<>();
+//    public Graph(int vertices) {
+//        this.vertices = vertices;
+//        this.roadsOfCastle = new LinkedList[vertices]; // It will be populated from txt file
+//        for (int i = 0; i < vertices; i++) { //
+//            this.roadsOfCastle[i] = new LinkedList<>();
+//        }
+//
+//        this.castle = new HashMap<>(vertices);
+//    }
+
+    public Graph(In in) {
+
+
+        try {
+
+            int myInitialKnights = in.readInt();
+            this.vertices = in.readInt() + 1;
+            int edges = in.readInt();
+
+            this.castle = new HashMap<>(vertices);
+            this.castle.put(0, new Castle(0, myInitialKnights));
+
+            this.roadsOfCastle = new LinkedList[this.vertices]; // It will be populated from txt file
+            for (int i = 0; i < this.vertices; i++) {
+                this.roadsOfCastle[i] = new LinkedList<>();
+            }
+
+            for (int i = 1; i < this.vertices; i++) {
+
+                int castleNumber = in.readInt();
+                int castleKnights = in.readInt();
+
+                this.castle.put(i, new Castle(castleNumber, castleKnights));
+
+            }
+
+            // System.out.println(castle + "\n\n");
+
+            for (int i = 0; i < edges; i++) {
+                int v = in.readInt();
+                int w = in.readInt();
+                addEdge(v, w);
+            }
+        } catch (NoSuchElementException e) {
+            throw new IllegalArgumentException("invalid input format in Graph constructor", e);
         }
 
-        this.castle = new HashMap<>(vertices);
+        // System.out.println(roadsOfCastle + "\n\n");
+
     }
 
+
     // Street that connects two castles (undirected graph)
-    public void addEdge(Castle origin, Castle end) {
-        roadsOfCastle[origin.getCastleNumber()].add(end);
-        roadsOfCastle[end.getCastleNumber()].add(origin);
+    public void addEdge(int origin, int end) {
+
+        //System.out.println(origin + " -> " + end);
+
+        this.roadsOfCastle[origin].add(this.castle.get(end));
+        this.roadsOfCastle[end].add(this.castle.get(origin));
     }
 
     public List<Castle> adj(int target){
-        return roadsOfCastle[target];
+        return this.roadsOfCastle[target];
     }
 
     public int conquered(){
