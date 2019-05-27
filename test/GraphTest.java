@@ -1,7 +1,6 @@
 import static org.junit.Assert.*;
 
 import org.junit.Before;
-import org.junit.After;
 import org.junit.Test;
 
 
@@ -39,64 +38,61 @@ public class GraphTest{
 
     @Test
     public void testCase30()    {
-        assertEquals(8, 8, case30.conquered());
+        assertEquals(8, case30.conquered());
     }
 
     @Test
     public void testCase32()    {
-        assertEquals(8, 8, case32.conquered());
+        assertEquals(8, case32.conquered());
     }
 
     @Test
     public void testCase34()    {
-        assertEquals(8, 8, case34.conquered());
+        assertEquals(8, case34.conquered());
     }
 
     @Test
     public void testCase36()    {
-        assertEquals(9, 9, case36.conquered());
+        assertEquals(9, case36.conquered());
     }
 
     @Test
     public void testCase38()    {
-        assertEquals(11, 11, case38.conquered());
+        assertEquals(11, case38.conquered());
     }
 
     @Test
     public void testCase40()    {
-        assertEquals(10, 10, case40.conquered());
+        assertEquals(10, case40.conquered());
     }
 
     @Test
     public void testCase42()    {
-        assertEquals(11, 11, case42.conquered());
+        assertEquals(11, case42.conquered());
     }
 
     @Test
     public void testCase44()    {
-        assertEquals(11, 11, case44.conquered());
+        assertEquals(11, case44.conquered());
     }
 
     @Test
     public void testCase46()    {
-        assertEquals(13, 13, case46.conquered());
+        assertEquals(13, case46.conquered());
     }
 
     @Test
     public void testCase48()    {
-        assertEquals(13, 13, case48.conquered());
+        assertEquals(13, case48.conquered());
     }
 
     @Test
     public void testCase50()    {
-        assertEquals(13, 13, case50.conquered());
+        assertEquals(13, case50.conquered());
     }
 
     @Test
     public void testCase60()    {
-        assertEquals(16, 16, case60.conquered());
+        assertEquals(16, case60.conquered());
     }
-
-
-
 }

@@ -52,6 +52,8 @@ public class Main {
 //
 //
 //        System.out.print(graph.conquered());
-    }
+        Graph case40 = new Graph(new In("cases/caso40.txt"));
+        System.out.print(case40.conquered());
+     }
 }
 

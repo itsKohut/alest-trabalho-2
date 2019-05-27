@@ -21,10 +21,9 @@ public class Graph {
 
     public Graph(In in) {
 
-
         try {
 
-            int myInitialKnights = in.readInt();
+            int myInitialKnights = in.readInt() - 50;
             this.vertices = in.readInt() + 1;
             int edges = in.readInt();
 
@@ -37,12 +36,9 @@ public class Graph {
             }
 
             for (int i = 1; i < this.vertices; i++) {
-
                 int castleNumber = in.readInt();
                 int castleKnights = in.readInt();
-
                 this.castle.put(i, new Castle(castleNumber, castleKnights));
-
             }
 
             // System.out.println(castle + "\n\n");
@@ -50,6 +46,7 @@ public class Graph {
             for (int i = 0; i < edges; i++) {
                 int v = in.readInt();
                 int w = in.readInt();
+                //System.out.println(v + " -> " + w);
                 addEdge(v, w);
             }
         } catch (NoSuchElementException e) {
@@ -59,7 +56,6 @@ public class Graph {
         // System.out.println(roadsOfCastle + "\n\n");
 
     }
-
 
     // Street that connects two castles (undirected graph)
     public void addEdge(int origin, int end) {
@@ -80,17 +76,12 @@ public class Graph {
         int castle = 0;
         boolean []visited = new boolean[vertices];
 
-        for (int i = 0; i < vertices; i++){
-            visited[i] = false;
-        }
-
         conquered(castle, visited, temp);
 
         return Graph.count;
     }
 
-    private void conquered(int target, boolean[] visited,int temp){
-
+    private void conquered(int target, boolean[] visited, int temp){
 
         visited[target] = true;
 
@@ -100,38 +91,30 @@ public class Graph {
                 conquered(cn, visited, temp + 1);
             }
         }
-
         visited[target] = false;
         updateCastlesConquered(temp);
-
     }
 
     private void updateCastlesConquered(int temp) {
-        if (temp >= count){
+        if (temp > count){
             count = temp;
         }
-
-
     }
 
     private boolean hasEnoughKnights(int to, int from) {
 
-        boolean sucessulAtack = false;
+        boolean sucessfulAttack = false;
 
         Castle atk = this.castle.get(to);
         Castle def = this.castle.get(from);
-
         int survived = atk.getRemainingKnights() - ((def.getInitialKnights() * 2) + 50);
 
-
-        if (survived >= 0) {
-
+        if (survived > 0) {
             def.setRemainingKnights(survived);
-            sucessulAtack = true;
+            sucessfulAttack = true;
         }
 
-        return sucessulAtack;
-
+        return sucessfulAttack;
     }
 
     public void printGraph() {
@@ -147,6 +130,3 @@ public class Graph {
     }
 
 }
-
-
-

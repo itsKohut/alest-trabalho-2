@@ -2,10 +2,7 @@ public class Castle {
 
     private int castleNumber;
     private int initialKnights;
-
     private int remainingKnights;
-
-
 
     public Castle(int castleNumber, int initialKnights){
         this.castleNumber = castleNumber;
@@ -16,7 +13,6 @@ public class Castle {
     public int getCastleNumber() {
         return castleNumber;
     }
-
 
     public int getInitialKnights() {
         return initialKnights;
