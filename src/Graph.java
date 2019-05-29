@@ -3,21 +3,10 @@ import java.util.*;
 public class Graph {
 
     public static int count = 0;
+    public Map<Integer, Castle> castle;
 
     private int vertices;
     private List<Castle>[] roadsOfCastle;
-
-    public Map<Integer, Castle> castle;
-
-//    public Graph(int vertices) {
-//        this.vertices = vertices;
-//        this.roadsOfCastle = new LinkedList[vertices]; // It will be populated from txt file
-//        for (int i = 0; i < vertices; i++) { //
-//            this.roadsOfCastle[i] = new LinkedList<>();
-//        }
-//
-//        this.castle = new HashMap<>(vertices);
-//    }
 
     public Graph(In in) {
 
@@ -41,27 +30,18 @@ public class Graph {
                 this.castle.put(i, new Castle(castleNumber, castleKnights));
             }
 
-            // System.out.println(castle + "\n\n");
-
             for (int i = 0; i < edges; i++) {
                 int v = in.readInt();
                 int w = in.readInt();
-                //System.out.println(v + " -> " + w);
                 addEdge(v, w);
             }
         } catch (NoSuchElementException e) {
             throw new IllegalArgumentException("invalid input format in Graph constructor", e);
         }
-
-        // System.out.println(roadsOfCastle + "\n\n");
-
     }
 
     // Street that connects two castles (undirected graph)
     public void addEdge(int origin, int end) {
-
-        //System.out.println(origin + " -> " + end);
-
         this.roadsOfCastle[origin].add(this.castle.get(end));
         this.roadsOfCastle[end].add(this.castle.get(origin));
     }
@@ -70,7 +50,7 @@ public class Graph {
         return this.roadsOfCastle[target];
     }
 
-    public int conquered(){
+    public int conquered() {
 
         int temp = 0;
         int castle = 0;
@@ -81,7 +61,7 @@ public class Graph {
         return Graph.count;
     }
 
-    private void conquered(int target, boolean[] visited, int temp){
+    private void conquered(int target, boolean[] visited, int temp) {
 
         visited[target] = true;
 
@@ -115,18 +95,6 @@ public class Graph {
         }
 
         return sucessfulAttack;
-    }
-
-    public void printGraph() {
-        for (int i = 0; i < vertices; i++) {
-            if (roadsOfCastle[i].size() > 0) {
-                System.out.print("Castle " + i + " has roads to: ");
-                for (Castle c : roadsOfCastle[i]) {
-                    System.out.print(c.getCastleNumber() + " ");
-                }
-                System.out.println();
-            }
-        }
     }
 
 }

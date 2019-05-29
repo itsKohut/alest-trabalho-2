@@ -3,8 +3,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-
-public class GraphTest{
+public class GraphTest {
 
     private  Graph case30;
     private  Graph case32;
@@ -20,8 +19,7 @@ public class GraphTest{
     private  Graph case60;
 
     @Before
-    public void prepareGraphs(){
-
+    public void prepareGraphs() {
         case30 = new Graph(new In("cases/caso30.txt"));
         case32 = new Graph(new In("cases/caso32.txt"));
         case34 = new Graph(new In("cases/caso34.txt"));

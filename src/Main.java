@@ -8,4 +8,3 @@ public class Main {
         System.out.println("It`ll be possible to conquer "+ graph.conquered() + " castles!");
      }
 }
-
